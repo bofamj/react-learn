@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { Book } from './book';
+import { theBook } from './books';
 
-// varyabels
-const firstBook = {
-	tital: 'The Last Thing He Told Me: A Novel',
-	/* auther: 'Laura Dave', */
-	img: 'https://images-na.ssl-images-amazon.com/images/I/81BdMSuI5ZS._AC_UL200_SR200,200_.jpg',
-	name: 'Laura Dave'
-};
 /* const tital = 'The Last Thing He Told Me: A Novel';
 const imag = 'https://images-na.ssl-images-amazon.com/images/I/81BdMSuI5ZS._AC_UL200_SR200,200_.jpg';
 const Auther = 'Laura Dave'; */
@@ -30,31 +25,22 @@ const Books = () => {
 	return (
 		<section>
 			{/* 	<Book /> */}
-			<Book img={firstBook.img} tital={firstBook.tital} name={firstBook.name} />
+			{/* <Book img={firstBook.img} tital={firstBook.tital} name={firstBook.name} /> */}
+			{theBook.map((boo) => {
+				//const { tital, nam, img, pris } = book;
+				return (
+					/* <div>
+						<h4>{tital}</h4>
+						<h6>{nam}</h6>
+					</div> */
+					//the first way to set the prop
+					//<Book key={book.id} book={book} />
+					//a nather way is to uos a sbred obritor
+					<Book key={boo.id} {...boo} />
+				);
+			})}
 		</section>
 	);
 };
-const Book = ({ img, tital, name }) => {
-	//anothr way const {img,tital,name}=props;
-	return (
-		<section>
-			{/* <Imeg />
-			<Titel />
-			<Auther /> */}
-			{/* <h3>{props.Auther}</h3> */}
-			<img src={img} />
-			<p>{tital}</p>
-			<h4>{name}</h4>
-		</section>
-	);
-};
-/* const Book = () => {
-	return <article>this isa book</article>;
-}; */
-/* const Imeg = () => (
-	<img src="https://images-na.ssl-images-amazon.com/images/I/81BdMSuI5ZS._AC_UL200_SR200,200_.jpg" alt="" />
-);
-const Titel = () => <p>The Last Thing He Told Me: A Novel</p>;
-const Auther = () => <h3>Laura Dave</h3>; */
 
 ReactDom.render(<Books />, document.getElementById('root'));
